@@ -6,7 +6,8 @@ ARG PINPOINT_VERSION=${PINPOINT_VERSION:-2.0.4}
 ARG INSTALL_URL=https://github.com/naver/pinpoint/releases/download/v${PINPOINT_VERSION}/pinpoint-web-boot-${PINPOINT_VERSION}.jar
 
 RUN mkdir -p /pinpoint/config \
-    && mkdir -p /pinpoint/scripts
+    && mkdir -p /pinpoint/scripts \
+    && apk --no-cache add curl
 
 COPY /build/config/pinpoint-web.properties /pinpoint/config/
 COPY /build/scripts/start-web.sh /pinpoint/scripts/
