@@ -7,7 +7,8 @@ ARG PINPOINT_VERSION=${PINPOINT_VERSION:-2.0.4}
 ARG INSTALL_URL=https://github.com/naver/pinpoint/releases/download/v${PINPOINT_VERSION}/pinpoint-collector-boot-${PINPOINT_VERSION}.war
 
 RUN mkdir -p /pinpoint/config \
-    && mkdir -p /pinpoint/scripts
+    && mkdir -p /pinpoint/scripts \
+    && apk --no-cache add curl
 
 COPY /build/config/pinpoint-collector.properties /pinpoint/config/
 COPY /build/scripts/start-collector.sh /pinpoint/scripts/
